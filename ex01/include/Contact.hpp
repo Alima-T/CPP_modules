@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aokhapki <aokhapki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alima <alima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 12:27:56 by aokhapki          #+#    #+#             */
-/*   Updated: 2025/05/06 16:09:46 by aokhapki         ###   ########.fr       */
+/*   Updated: 2025/05/07 14:05:01 by alima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Contact
 	std::string nickName;
 	std::string phoneNumber;
 	std::string darkestSecret;
-	
+
 	public:
 	void setContact();
 	void displayBrief(int index) const;

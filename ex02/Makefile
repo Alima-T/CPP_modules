@@ -2,15 +2,18 @@
 SRC_DIR = src
 INC_DIR = Include
 OBJ_DIR = obj
+LOG_DIR = logs
+
+# Compiler & Flags
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -I$(INC_DIR)
 
 # Files
 SRCS = $(wildcard $(SRC_DIR)/*.cpp)
 OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
-NAME = phonebook
+NAME = account
+OUTFILE = $(LOG_DIR)/current_run.log
 
-# Compiler and flags
-CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -I$(INC_DIR)
 
 # Colors
 GREEN = \033[0;32m
@@ -26,26 +29,35 @@ all: $(NAME)
 	@printf "  \\____|_|   |_|     |_|  |_|\\___/ \\__,_|\\__,_|_|\\___|  \\___/ \\___/ \n"
 	@printf "$(RESET)\n"
 
-
-# Linking the executable
+# Link object files
 $(NAME): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
-# Create the object directory and compile object files into obj/
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
-	@mkdir -p $(OBJ_DIR)   # Make sure the obj/ directory exists
+# Compile .cpp to .o into obj/
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Remove object files
+# Create obj dir if it doesn't exist
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
+# Builds the project, executes accountand saves output to logs/current_run.log
+run: all
+	./$(NAME) > $(OUTFILE)
+
+# Compares the latest run with the provided original log
+diff:
+	diff $(LOG_DIR)/19920104_091532.log $(OUTFILE) || true
+
+# Clean object files
 clean:
 	rm -rf $(OBJ_DIR)
 
-# Remove executable and object files
+# Clean everything
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(OUTFILE)
 
 # Rebuild everything
 re: fclean all
 
-# Special targets
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re run diff

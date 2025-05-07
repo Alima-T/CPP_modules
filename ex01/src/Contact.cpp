@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aokhapki <aokhapki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alima <alima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 15:12:33 by aokhapki          #+#    #+#             */
-/*   Updated: 2025/05/06 16:16:54 by aokhapki         ###   ########.fr       */
+/*   Updated: 2025/05/07 16:15:12 by alima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void Contact::setContact()
 
 void Contact::displayBrief(int i) const//sets the width parameter of the stream out or in to exactly n
 {
-	std::cout << std::setw(10) << index << "|";
+	std::cout << std::setw(10) << i << "|";
 	std::string fields[3] = {firstName, lastName, nickName};
 	for(int i = 0; i < 3; i++)
 	{

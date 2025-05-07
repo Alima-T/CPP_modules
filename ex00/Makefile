@@ -7,8 +7,15 @@ NAME = megaphone
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-# Default rule
 all: $(NAME)
+	@printf "\n"
+	@printf "$(GREEN)"
+	@printf "   ____ ____  ____    __  __           _       _         ___   ___  \n"
+	@printf "  / ___|  _ \\|  _ \\  |  \\/  | ___   __| |_   _| | ___   / _ \\ / _ \\ \n"
+	@printf " | |   | |_) | |_) | | |\\/| |/ _ \\ / _\` | | | | |/ _ \\ | | | | | | |\n"
+	@printf " | |___|  __/|  __/  | |  | | (_) | (_| | |_| | |  __/ | |_| | |_| |\n"
+	@printf "  \\____|_|   |_|     |_|  |_|\\___/ \\__,_|\\__,_|_|\\___|  \\___/ \\___/ \n"
+	@printf "$(RESET)\n"
 
 # Linking the executable
 $(NAME): $(OBJS)
