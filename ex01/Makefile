@@ -10,7 +10,7 @@ NAME = phonebook
 
 # Compiler and flags
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -I$(INC_DIR)
+CXXFLAGS = -Wall -Wextra -Werror -std=c++17 -I$(INC_DIR)
 
 # Colors
 GREEN = \033[0;32m

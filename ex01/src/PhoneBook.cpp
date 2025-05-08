@@ -3,20 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alima <alima@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aokhapki <aokhapki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 12:21:15 by aokhapki          #+#    #+#             */
-/*   Updated: 2025/05/07 16:26:38 by alima            ###   ########.fr       */
+/*   Updated: 2025/05/08 22:14:10 by aokhapki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include <iostream>
 #include <limits>
-
-
-
-
 
 //the constructor for the PhoneBook class
 PhoneBook::PhoneBook() 
@@ -49,6 +45,7 @@ void PhoneBook::searchContacts() const
 	std::string input;
 	int index = 0;
 	std::getline(std::cin, input); //This reads the entire input line from the user.
+	
 	try
 	{
 		index = std::stoi(input);
@@ -67,6 +64,7 @@ void PhoneBook::searchContacts() const
 	{
 		std::cout << "Wrong input, number is out of range." << '\n';
 	}
+		
 }
 
 	

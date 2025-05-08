@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alima <alima@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aokhapki <aokhapki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/06 15:12:33 by aokhapki          #+#    #+#             */
-/*   Updated: 2025/05/07 16:15:12 by alima            ###   ########.fr       */
+/*   Created: 2025/05/08 22:12:02 by aokhapki          #+#    #+#             */
+/*   Updated: 2025/05/08 22:16:36 by aokhapki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,27 @@
 #include <iomanip> //to manage input and output formatting
 #include "Contact.hpp"
 
+bool safeGetline(std::string& input) {
+	if (!std::getline(std::cin, input)) {
+		std::cout << "\nInput interrupted. Exiting.\n";
+		return false;
+	}
+	return true;
+}
+
 void Contact::setContact()
 {
 	std::cout << "First name: ";
-	std::getline(std::cin, firstName);
+	if (!safeGetline(firstName)) return;
 	std::cout << "Last name: ";
-	std::getline(std::cin, lastName);
-	std::cout << "NickName: ";
-	std::getline(std::cin, nickName);
+	if (!safeGetline(lastName)) return;
+	std::cout << "Nickname: ";
+	if (!safeGetline(nickName)) return;
 	std::cout << "Phone number: ";
-	std::getline(std::cin, phoneNumber);
+	if (!safeGetline(phoneNumber)) return;
 	std::cout << "Darkest secret: ";
-	std::getline(std::cin, darkestSecret);
+	if (!safeGetline(darkestSecret)) return;
+	
 }
 
 void Contact::displayBrief(int i) const//sets the width parameter of the stream out or in to exactly n

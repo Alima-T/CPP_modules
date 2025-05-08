@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alima <alima@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aokhapki <aokhapki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/06 15:22:30 by aokhapki          #+#    #+#             */
-/*   Updated: 2025/05/07 16:21:18 by alima            ###   ########.fr       */
+/*   Created: 2025/05/08 22:12:28 by aokhapki          #+#    #+#             */
+/*   Updated: 2025/05/08 22:19:06 by aokhapki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@ int main() {
 
 	while (true) {
 		std::cout << "Enter command (ADD, SEARCH, EXIT): ";
-		std::getline(std::cin, command); //This reads the entire input line from the user into the command string.
+		if (!std::getline(std::cin, command)) //This reads the entire input line from the user into the command string.
+		{
+			std::cout << "\nEOF detected (Ctrl+D). Exiting...\n";
+			break;
+		}
 
 		if (command == "ADD")
 			phonebook.addContact();
@@ -27,6 +31,8 @@ int main() {
 			phonebook.searchContacts();
 		else if (command == "EXIT")
 			break;
+		else if (!command.empty())
+			std::cout << "Unknown command: " << command << std::endl;
 	}
 	return 0;
 }
